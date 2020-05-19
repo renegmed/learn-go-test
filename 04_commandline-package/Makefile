@@ -6,7 +6,8 @@ testv0:
 .PHONY: testv0
 
 testv1:	
-	go test v1/*.go  -v -race
+	go test v1/*.go -v -race
+	# go test ./... -v -race
 .PHONY: testv1
 
 
