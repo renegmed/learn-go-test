@@ -10,6 +10,10 @@ testv1:
 	# go test ./... -v -race
 .PHONY: testv1
 
+run-mainv1:
+	#cd v1/cmd/webserver
+	go run v1/cmd/webserver/main.go 
+.PHONY: run-mainv1
 
 postv1:
 	curl -X POST http://localhost:5000/players/John -v
