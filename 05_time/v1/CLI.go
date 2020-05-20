@@ -14,9 +14,6 @@ a *File under the hood which means it implements io.Reader
 is a handy way of capturing text
 
 */
-type BlindAlerter interface {
-	ScheduleAlertAt(duration time.Duration, amount int)
-}
 
 type CLI struct {
 	playerStore PlayerStore
@@ -43,6 +40,7 @@ func (cli *CLI) scheduleBlindAlerts() {
 	for _, blind := range blinds {
 		cli.alerter.ScheduleAlertAt(blindTime, blind)
 		blindTime = blindTime + (10 * time.Second) // 0 10 20 30 40 50 ...
+
 	}
 }
 func extractWinner(userInput string) string {

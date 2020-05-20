@@ -20,5 +20,12 @@ func main() {
 	fmt.Println("Let's play poker")
 	fmt.Println("Type {Name} wins to record a win")
 
-	poker.NewCLI(store, os.Stdin).PlayPoker()
+	/*
+		Note:
+
+		StdOutAlerter has the method signature of function type BlindAlerterFunc
+		BlindAlerterFunc implements the interface BlindAlerter, thus
+		StdOutAlerter function can be passed as parameter of NewCLI
+	*/
+	poker.NewCLI(store, os.Stdin, poker.BlindAlerterFunc(poker.StdOutAlerter)).PlayPoker()
 }
