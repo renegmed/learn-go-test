@@ -15,16 +15,25 @@ is a handy way of capturing text
 */
 type CLI struct {
 	playerStore PlayerStore
-	in          io.Reader
+	in          *bufio.Scanner
 }
 
+func NewCLI(store PlayerStore, in io.Reader) *CLI {
+	return &CLI{
+		playerStore: store,
+		in:          bufio.NewScanner(in), // use a bufio.Scanner to read the input from the io.Reader.
+	}
+}
 func (cli *CLI) PlayPoker() {
-	reader := bufio.NewScanner(cli.in) // use a bufio.Scanner to read the input from the io.Reader.
-	reader.Scan()
-
-	cli.playerStore.RecordWin(extractWinner(reader.Text())) // Scanner.Text() to return the string the scanner read to
+	userInput := cli.readLine()
+	cli.playerStore.RecordWin(extractWinner(userInput))
 }
 
 func extractWinner(userInput string) string {
 	return strings.Replace(userInput, " wins", "", 1)
+}
+
+func (cli *CLI) readLine() string {
+	cli.in.Scan()
+	return cli.in.Text() // Scanner.Text() to return the string the scanner read to
 }
