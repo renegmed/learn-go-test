@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	poker "github.com/renegmed/learn-go-test/04_commandline-package/v1"
+	poker "github.com/renegmed/learn-go-test/05_time/v1"
 )
 
 const dbFileName = "game.db.json"
