@@ -17,7 +17,7 @@ func TestGame_start(t *testing.T) {
 		blindAlerter := &SpyBlindAlerter{}
 		game := poker.NewGame(blindAlerter, playerStore)
 
-		cli := poker.NewCLI(playerStore, in, dummyStdOut, game)
+		cli := poker.NewCLI(in, dummyStdOut, game)
 		cli.PlayPoker()
 
 		cases := []scheduleAlert{ //10 minute increment, 5 players @ 1 min/player + 5 minutes
@@ -54,7 +54,7 @@ func TestGame_start(t *testing.T) {
 
 		game := poker.NewGame(blindAlerter, dummyPlayerStore)
 
-		cli := poker.NewCLI(dummyPlayerStore, in, stdout, game)
+		cli := poker.NewCLI(in, stdout, game)
 		cli.PlayPoker()
 
 		got := stdout.String()
@@ -64,7 +64,7 @@ func TestGame_start(t *testing.T) {
 			t.Errorf("got %q, want %q", got, want)
 		}
 
-		cases := []scheduleAlert{
+		cases := []scheduleAlert{ //12 minute increment, 7 players @ 1 min/player + 5 minutes
 			{0 * time.Second, 100},
 			{12 * time.Minute, 200},
 			{24 * time.Minute, 300},

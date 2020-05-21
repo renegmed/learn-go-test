@@ -40,7 +40,7 @@ func TestCLI(t *testing.T) {
 		playerStore := &poker.StubPlayerStore{}
 		game := poker.NewGame(dummyBlindAlerter, playerStore)
 
-		cli := poker.NewCLI(playerStore, in, dummyStdOut, game)
+		cli := poker.NewCLI(in, dummyStdOut, game)
 		cli.PlayPoker()
 
 		poker.AssertPlayerWin(t, playerStore, "Chris")
@@ -51,7 +51,7 @@ func TestCLI(t *testing.T) {
 
 		playerStore := &poker.StubPlayerStore{}
 		game := poker.NewGame(dummyBlindAlerter, playerStore)
-		cli := poker.NewCLI(playerStore, in, dummyStdOut, game)
+		cli := poker.NewCLI(in, dummyStdOut, game)
 		cli.PlayPoker()
 
 		poker.AssertPlayerWin(t, playerStore, "Cleo")

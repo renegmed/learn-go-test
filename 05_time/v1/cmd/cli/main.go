@@ -27,5 +27,7 @@ func main() {
 		BlindAlerterFunc implements the interface BlindAlerter, thus
 		StdOutAlerter function can be passed as parameter of NewCLI
 	*/
-	poker.NewCLI(store, os.Stdin, poker.BlindAlerterFunc(poker.StdOutAlerter)).PlayPoker()
+	game := poker.NewGame(poker.BlindAlerterFunc(poker.StdOutAlerter), store)
+	cli := poker.NewCLI(os.Stdin, os.Stdout, game)
+	cli.PlayPoker()
 }

@@ -25,7 +25,7 @@ type CLI struct {
 }
 
 // CLI being concerned with input/output and delegating game specific actions to a Game
-func NewCLI(store PlayerStore, in io.Reader, out io.Writer, game *Game) *CLI {
+func NewCLI(in io.Reader, out io.Writer, game *Game) *CLI {
 	return &CLI{
 		in:   bufio.NewScanner(in),
 		out:  out,
