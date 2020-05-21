@@ -28,7 +28,6 @@ func (a BlindAlerterFunc) ScheduleAlertAt(duration time.Duration, amount int) {
 /*
 	This function bears the signature of function BlindAlerterFunc
 	thus implementer the BlindAlerter interface.
-
 */
 func StdOutAlerter(duration time.Duration, amount int) {
 	time.AfterFunc(duration, func() {
