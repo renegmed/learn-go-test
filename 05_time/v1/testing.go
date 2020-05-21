@@ -1,6 +1,10 @@
 package poker
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+	"time"
+)
 
 type StubPlayerStore struct {
 	scores   map[string]int
@@ -35,4 +39,23 @@ func AssertPlayerWin(t *testing.T, store *StubPlayerStore, winner string) {
 	if store.winCalls[0] != winner {
 		t.Errorf("did not store correct winner got %q want %q", store.winCalls[0], winner)
 	}
+}
+
+// ScheduledAlert holds information about when an alert is scheduled
+type ScheduledAlert struct {
+	At     time.Duration
+	Amount int
+}
+
+func (s ScheduledAlert) String() string {
+	return fmt.Sprintf("%d chips at %v", s.Amount, s.At)
+}
+
+type SpyBlindAlerter struct {
+	Alerts []ScheduledAlert
+}
+
+// implements interface BlindAlerter
+func (s *SpyBlindAlerter) ScheduleAlertAt(at time.Duration, amount int) {
+	s.Alerts = append(s.Alerts, ScheduledAlert{at, amount})
 }

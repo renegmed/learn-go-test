@@ -19,16 +19,7 @@ func (s scheduleAlert) String() string {
 	return fmt.Sprintf("%d chips at %v", s.amount, s.at)
 }
 
-type SpyBlindAlerter struct {
-	alerts []scheduleAlert
-}
-
-// implements interface BlindAlerter
-func (s *SpyBlindAlerter) ScheduleAlertAt(duration time.Duration, amount int) {
-	s.alerts = append(s.alerts, scheduleAlert{duration, amount})
-}
-
-var dummyBlindAlerter = &SpyBlindAlerter{}
+var dummyBlindAlerter = &poker.SpyBlindAlerter{}
 var dummyPlayerStore = &poker.StubPlayerStore{}
 var dummyStdIn = &bytes.Buffer{}
 var dummyStdOut = &bytes.Buffer{}
@@ -38,7 +29,7 @@ func TestCLI(t *testing.T) {
 		in := strings.NewReader("1\nChris wins\n")
 
 		playerStore := &poker.StubPlayerStore{}
-		game := poker.NewGame(dummyBlindAlerter, playerStore)
+		game := poker.NewTexasHoldem(dummyBlindAlerter, playerStore)
 
 		cli := poker.NewCLI(in, dummyStdOut, game)
 		cli.PlayPoker()
@@ -50,7 +41,7 @@ func TestCLI(t *testing.T) {
 		in := strings.NewReader("1\nCleo wins\n")
 
 		playerStore := &poker.StubPlayerStore{}
-		game := poker.NewGame(dummyBlindAlerter, playerStore)
+		game := poker.NewTexasHoldem(dummyBlindAlerter, playerStore)
 		cli := poker.NewCLI(in, dummyStdOut, game)
 		cli.PlayPoker()
 

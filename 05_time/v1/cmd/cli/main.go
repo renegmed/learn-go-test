@@ -17,9 +17,6 @@ func main() {
 	}
 	defer close()
 
-	fmt.Println("Let's play poker")
-	fmt.Println("Type {Name} wins to record a win")
-
 	/*
 		Note:
 
@@ -27,7 +24,11 @@ func main() {
 		BlindAlerterFunc implements the interface BlindAlerter, thus
 		StdOutAlerter function can be passed as parameter of NewCLI
 	*/
-	game := poker.NewGame(poker.BlindAlerterFunc(poker.StdOutAlerter), store)
+	game := poker.NewTexasHoldem(poker.BlindAlerterFunc(poker.StdOutAlerter), store)
 	cli := poker.NewCLI(os.Stdin, os.Stdout, game)
+
+	fmt.Println("Let's play poker")
+	fmt.Println("Type {Name} wins to record a win")
+
 	cli.PlayPoker()
 }
