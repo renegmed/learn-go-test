@@ -1,6 +1,6 @@
-test1:
+testv1:
 	go test v1/* -v
-.PHONY: test1
+.PHONY: testv1
 
 install-errorcheck:
 	go get -u github.com/kisielk/errorcheck

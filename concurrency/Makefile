@@ -1,10 +1,10 @@
-test:
+testv1:
 	go test v1/CheckWebsites_test.go v1/CheckWebsites.go -v 
-.PHONY: test
+.PHONY: testv1
 
-bench-test:
+bench-testv1:
 	go test v1/CheckWebsites_benchmark_test.go v1/CheckWebsites.go -bench=.
-.PHONY: bench-test
+.PHONY: bench-testv1
 
 
 testv2:

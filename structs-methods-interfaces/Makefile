@@ -1,7 +1,7 @@
 
-test:
+testv1:
 	go test v1/* -v 
-.PHONY: test
+.PHONY: testv1
 
 test-rectangle:
 	# run specific tests within table 
