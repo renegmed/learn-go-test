@@ -1,11 +1,14 @@
-package poker
+package poke
 
-import "testing"
+import (
+	"testing"
+	//poker "github.com/renegmed/learn-go-test/04_commandline-package/v1"
+)
 
 type StubPlayerStore struct {
 	scores   map[string]int
 	winCalls []string
-	league   League
+	league   poker.League
 }
 
 // implements PlayerStore interface

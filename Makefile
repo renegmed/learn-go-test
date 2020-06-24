@@ -28,7 +28,7 @@ test:
 	$(MAKE) -C 03_io_sorting testv7
 	$(MAKE) -C 03_io_sorting testv8
 	$(MAKE) -C 03_io_sorting testv9
-	$(MAKE) -C 04_commandline-package testv1
+	# $(MAKE) -C 04_commandline-package testv1
 	$(MAKE) -C 05_time testv1
 	$(MAKE) -C arrays-slices testv1
 	$(MAKE) -C arrays-slices testv2
